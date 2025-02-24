@@ -20,7 +20,7 @@ variable "common_tags"{
 }
 
 variable "vpc_tags" {
-   
+   default = {}
 }
 
 variable "igw_tags"{
@@ -28,24 +28,27 @@ variable "igw_tags"{
 }
 
 variable "public_subnet_cidr"{
+    type = list
     validation {
         condition     = length(var.public_subnet_cidr) == 2
-        error_message = "please provide atleast 2 valid sunet cidrs."
+        error_message = "Please provide 2 valid public subnet CIDR"
      }
 }
 
 variable "private_subnet_cidr"{
+    type = list
     validation {
         condition     = length(var.private_subnet_cidr) == 2
-        error_message = "please provide atleast 2 valid sunet cidrs."
+        error_message = "Please provide 2 valid private subnet CIDR"
      }
 }
 
 
 variable "database_subnet_cidr"{
+    type = list
     validation {
         condition     = length(var.database_subnet_cidr) == 2
-        error_message = "please provide atleast 2 valid databas subnet cidrs."
+        error_message = "Please provide 2 valid database subnet CIDR"
      }
 }
 
